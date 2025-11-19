@@ -1,6 +1,7 @@
 'use client'; // C'est un component côté client
 
 import { useState } from 'react';
+import DateSelector from "./DateSelector";
 
 // Rendre la couleur personnalisable
 interface BookingWidgetProps {
@@ -21,6 +22,12 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
     price: '45€',
     spotsLeft: 3,
     slots: ['14h', '16h30', '19h'],
+  };
+
+  const schedule = {
+    monday: ['17:30', '20:00'],
+    wednesday: ['13:00'],
+    friday: ['18:30'],
   };
 
   const handleBooking = () => {
@@ -51,6 +58,7 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
         <p className="text-sm text-gray-600">{workshop.location}</p>
         <p className="text-sm text-gray-600">{workshop.date}</p>
         <p className="text-lg font-semibold text-gray-900">{workshop.price}</p>
+        <DateSelector />
         <p className="text-sm text-gray-500">{workshop.spotsLeft} places restantes</p>
         <div className="flex flex-wrap gap-2 mt-3">
           {workshop.slots.map((slot) => (
