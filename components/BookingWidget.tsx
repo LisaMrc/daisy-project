@@ -18,7 +18,6 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
     title: "Initiation à l'aquarelle",
     image: '/image.jpg',
     location: 'Paris 11e',
-    date: 'Samedi 23 novembre',
     price: '45€',
     spotsLeft: 3,
     slots: ['14h', '16h30', '19h'],
@@ -56,10 +55,8 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
         {/* J'imite comment les images sont positionnées sur le site de Daisyapp */}
         <h2 className="text-xl font-bold text-gray-900">{workshop.title}</h2>
         <p className="text-sm text-gray-600">{workshop.location}</p>
-        <p className="text-sm text-gray-600">{workshop.date}</p>
         <p className="text-lg font-semibold text-gray-900">{workshop.price}</p>
         <BookingDatePicker />
-        <p className="text-sm text-gray-500">{workshop.spotsLeft} places restantes</p>
         <div className="flex flex-wrap gap-2 mt-3">
           {workshop.slots.map((slot) => (
             <button
@@ -77,6 +74,7 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
             </button>
           ))}
         </div>
+        <p className="text-sm text-gray-500 text-center">{workshop.spotsLeft} places restantes</p>
         <button
           onClick={handleBooking}
           disabled={status === 'loading'}
