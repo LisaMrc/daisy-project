@@ -34,41 +34,50 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
       className="w-full max-w-sm rounded-2xl shadow-lg overflow-hidden bg-white"
       style={{ borderColor: primaryColor, borderWidth: 2 }}
     >
-      <div className="p-4 space-y-2">
-        <p className="text-sm text-gray-600 text-center hide-on-short">
-          Envie de se rencontrer ? Participez à mon atelier !
-        </p>
-        <img
-          src={workshop.image}
-          alt={workshop.title}
-          className="w-full h-40 sm:h-48 md:h-56 object-cover rounded-md hide-on-short"
-          // J'imite comment les images sont stylisées sur le site de DaisyApp
-        />
+      <div
+        className={`relative transition-opacity duration-300 ${status === 'loading' ? 'opacity-30' : 'opacity-100'}`}
+      >
+        {status === 'loading' && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img src="/loader.png" alt="loading" className="w-20 h-20 animate-spin-slow" />
+          </div>
+        )}
+        <div className="p-4 space-y-2">
+          <p className="text-sm text-gray-600 text-center hide-on-short">
+            Envie de se rencontrer ? Participez à mon atelier !
+          </p>
+          <img
+            src={workshop.image}
+            alt={workshop.title}
+            className="w-full h-40 sm:h-48 md:h-56 object-cover rounded-md hide-on-short"
+            // J'imite comment les images sont stylisées sur le site de DaisyApp
+          />
 
-        <h2 className="text-xl font-bold text-gray-900">{workshop.title}</h2>
-        <p className="text-sm text-gray-600">{workshop.location}</p>
-        <p className="text-lg font-semibold text-gray-900">{workshop.price}</p>
+          <h2 className="text-xl font-bold text-gray-900">{workshop.title}</h2>
+          <p className="text-sm text-gray-600">{workshop.location}</p>
+          <p className="text-lg font-semibold text-gray-900">{workshop.price}</p>
 
-        <BookingDatePicker
-          primaryColor={primaryColor}
-          selectedSlot={selectedSlot}
-          setSelectedSlot={setSelectedSlot}
-        />
+          <BookingDatePicker
+            primaryColor={primaryColor}
+            selectedSlot={selectedSlot}
+            setSelectedSlot={setSelectedSlot}
+          />
 
-        <button
-          onClick={handleBooking}
-          disabled={status === 'loading'}
-          className="w-full mt-4 py-2 text-white rounded-lg font-semibold"
-          style={{ backgroundColor: primaryColor }}
-        >
-          {status === 'loading'
-            ? 'Réservation...'
-            : status === 'success'
-              ? '✅ Réservé !'
-              : status === 'error'
-                ? '❌ Erreur, réessaie'
-                : 'Réserver'}
-        </button>
+          <button
+            onClick={handleBooking}
+            disabled={status === 'loading'}
+            className="w-full mt-4 py-2 text-white rounded-lg font-semibold"
+            style={{ backgroundColor: primaryColor }}
+          >
+            {status === 'loading'
+              ? 'Réservation...'
+              : status === 'success'
+                ? '✅ Réservé !'
+                : status === 'error'
+                  ? '❌ Erreur, réessaie'
+                  : 'Réserver'}
+          </button>
+        </div>
       </div>
     </div>
   );
