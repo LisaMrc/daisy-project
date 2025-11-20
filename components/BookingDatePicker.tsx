@@ -10,6 +10,8 @@ interface BookingDatePickerProps {
   primaryColor: string;
   selectedSlot: string | null;
   setSelectedSlot: React.Dispatch<React.SetStateAction<string | null>>;
+  date: Date | null;
+  setDate: (d: Date | null) => void;
 }
 
 export default function BookingDatePicker({
@@ -17,17 +19,19 @@ export default function BookingDatePicker({
   selectedSlot,
   setSelectedSlot,
 }: BookingDatePickerProps) {
+  // données variables, leurs setters et leurs valeurs par défaut
   const [date, setDate] = useState<Date | undefined>();
   const [slots, setSlots] = useState<string[]>([]);
   const [spotsLeft, setSpotsLeft] = useState<number | null>(null);
 
+  // Faux planning
   const schedule = {
     monday: ['17:30', '20:00'],
     wednesday: ['13:00', '14:00', '21:00'],
     friday: ['18:30'],
   };
 
-  //   Fonction qui imite ce que renverrai un serveur ou une API pour le nombre de places restantes
+  // Fonction qui imite ce que renverrai un serveur ou une API pour le nombre de places restantes
   async function fetchSpotsForDate(date: Date): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -58,28 +62,29 @@ export default function BookingDatePicker({
     return hasPassed(d) || !hasSchedule(d);
   }
 
+  // NB : ici les 3 fonctions précédentes peuvent être rassemblées en une seule,
+  // mais j'ai décidé de les séparer pour un code plus flexible et lisible (single responsibility)
+
   async function handleSelect(d: Date | undefined) {
     if (!d || isDisabled(d)) return;
+
     setDate(d);
+
     const day = d.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const availableSlots = schedule[day as keyof typeof schedule] || [];
     setSlots(availableSlots);
+
     if (!availableSlots.includes(selectedSlot || '')) {
       setSelectedSlot(null);
 
-      // 1. On récupère les créneaux
       const day = d.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
       const availableSlots = schedule[day as keyof typeof schedule] || [];
       setSlots(availableSlots);
 
-      // 2. On simule l'appel API pour les places restantes
       const spots = await fetchSpotsForDate(d);
       setSpotsLeft(spots);
     }
   }
-
-  // NB : ici les 3 fonctions peuvent être rassemblées en une seule,
-  // mais j'ai décidé de les séparer pour un code plus flexible et lisible (single responsibility)
 
   return (
     <div className="flex flex-col gap-4">
@@ -106,7 +111,7 @@ export default function BookingDatePicker({
         </PopoverContent>
       </Popover>
 
-      {/* Boutons créneau dynamiques */}
+      {/* Boutons horaires dynamiques */}
       <div className="flex flex-wrap gap-2 mt-2">
         {slots.length > 0 ? (
           slots.map((slot) => (
@@ -125,7 +130,7 @@ export default function BookingDatePicker({
             </button>
           ))
         ) : (
-          <p className="text-gray-500">Aucun créneau disponible</p>
+          <p className="text-gray-500">Aucun horaire</p>
         )}
       </div>
 
