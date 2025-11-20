@@ -1,0 +1,17 @@
+@media (max-height: 700px) {
+  .hide-on-short {
+    display: none;
+  }
+}
+
+@media (max-width: 200px) {
+    .hide-on-short {
+      display: none;
+    }
+  }
+
+@media (max-width: 640px) {
+  .responsive-img {
+    height: 150px;
+  }
+}

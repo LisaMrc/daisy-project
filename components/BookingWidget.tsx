@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import BookingDatePicker from "./BookingDatePicker";
+import BookingDatePicker from './BookingDatePicker';
 
 interface BookingWidgetProps {
   primaryColor?: string;
@@ -33,20 +33,19 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
       style={{ borderColor: primaryColor, borderWidth: 2 }}
     >
       <div className="p-4 space-y-2">
-        <p className="text-sm text-gray-600 text-center">
+        <p className="text-sm text-gray-600 text-center hide-on-short">
           Envie de se rencontrer ? Participez à mon atelier !
         </p>
         <img
           src={workshop.image}
           alt={workshop.title}
-          className="w-full h-48 object-cover rounded-md"
+          className="w-full h-40 sm:h-48 md:h-56 object-cover rounded-md hide-on-short"
         />
 
         <h2 className="text-xl font-bold text-gray-900">{workshop.title}</h2>
         <p className="text-sm text-gray-600">{workshop.location}</p>
         <p className="text-lg font-semibold text-gray-900">{workshop.price}</p>
 
-        {/* On passe la primaryColor et la sélection à BookingDatePicker */}
         <BookingDatePicker
           primaryColor={primaryColor}
           selectedSlot={selectedSlot}
