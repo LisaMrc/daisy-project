@@ -1,8 +1,9 @@
-'use client';
+'use client'; // C'est un component côté client
 
 import { useState } from 'react';
 import BookingDatePicker from './BookingDatePicker';
 
+// Rendre la couleur personnalisable
 interface BookingWidgetProps {
   primaryColor?: string;
 }
@@ -11,6 +12,7 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
+  // simulation API
   const workshop = {
     title: "Initiation à l'aquarelle",
     image: '/image.jpg',
@@ -40,6 +42,7 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
           src={workshop.image}
           alt={workshop.title}
           className="w-full h-40 sm:h-48 md:h-56 object-cover rounded-md hide-on-short"
+          // J'imite comment les images sont stylisées sur le site de DaisyApp
         />
 
         <h2 className="text-xl font-bold text-gray-900">{workshop.title}</h2>
@@ -51,8 +54,6 @@ export default function BookingWidget({ primaryColor = '#800080' }: BookingWidge
           selectedSlot={selectedSlot}
           setSelectedSlot={setSelectedSlot}
         />
-
-        <p className="text-sm text-gray-500 text-center">{workshop.spotsLeft} places restantes</p>
 
         <button
           onClick={handleBooking}
