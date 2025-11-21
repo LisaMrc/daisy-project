@@ -10,6 +10,7 @@ Essayez-le ici : https://daisy-project-five.vercel.app/
 - Vercel
 - Shadcn UI
 - Figma
+- Gitmoji (pour les commits) : https://gitmoji.dev/
 
 
 ## ✨ Features
@@ -55,6 +56,7 @@ Essayez-le ici : https://daisy-project-five.vercel.app/
 7. Travail sur d'autres features plus secondaires
    1. Taille du widget fixe entre tous les écrans
    2. Récapitulatif de la réservation
+8. Nettoyage et relecture du code
 
 
 ##  🧱 Structure

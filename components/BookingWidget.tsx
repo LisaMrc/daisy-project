@@ -53,8 +53,6 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
         <button
           className="w-full py-2 rounded-lg text-white font-semibold"
           style={{ backgroundColor: primaryColor }}
-          onClick={() => alert('Mock — aucune action')}
-          //   TODO: vérifier ceci
         >
           Ajouter à l’agenda
         </button>
