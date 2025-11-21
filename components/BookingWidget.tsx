@@ -25,6 +25,7 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
     if (!selectedSlot) return alert('Merci de sélectionner une date et une heure');
     setStatus('loading');
     setTimeout(() => {
+      // On fait comme si la requête pouvait échouer 1 fois sur 5 (pour une question de démonstration)
       setStatus(Math.random() > 0.2 ? 'success' : 'error');
     }, 1200);
   };
