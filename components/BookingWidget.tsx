@@ -17,7 +17,7 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
   const workshop = {
     title: "Initiation à l'aquarelle",
     image: '/image.jpg',
-    location: 'Paris 11e',
+    location: '4 Rue du Moulin, Paris 11',
     price: '45€',
   };
 
@@ -39,16 +39,23 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
   if (status === 'success') {
     return (
       <div
-        className="w-full max-w-sm rounded-2xl shadow-lg p-6 bg-white text-center space-y-4"
+        className="w-full max-w-sm rounded-2xl shadow-lg p-6 bg-white text-center 
+        space-y-4 keep-size flex flex-col items-center justify-center"
         style={{ borderColor: primaryColor, borderWidth: 2 }}
       >
-        <h2 className="text-2xl font-bold text-gray-900">🎉 Réservé !</h2>
-        <p className="text-gray-600">Votre créneau a bien été réservé.</p>
+        <h2 className="text-2xl font-bold text-gray-900">Votre créneau a bien été réservé</h2>
+        <p className="text-gray-600">
+          Rendez-vous à <b>{workshop.location}</b> le
+          <b>{date?.toLocaleDateString('fr-FR')}</b> à <b>{selectedSlot} </b>
+          pour l'atelier {workshop.title}
+        </p>
+        //   FIXME: afficher la date
 
         <button
           className="w-full py-2 rounded-lg text-white font-semibold"
           style={{ backgroundColor: primaryColor }}
           onClick={() => alert('Mock — aucune action')}
+          //   TODO: vérifier ceci
         >
           Ajouter à l’agenda
         </button>
@@ -67,7 +74,8 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
   if (status === 'error') {
     return (
       <div
-        className="w-full max-w-sm rounded-2xl shadow-lg p-6 bg-white text-center space-y-4"
+        className="w-full max-w-sm rounded-2xl shadow-lg p-6 bg-white text-center 
+                   space-y-8 keep-size flex flex-col items-center justify-center"
         style={{ borderColor: primaryColor, borderWidth: 2 }}
       >
         <h2 className="text-2xl font-bold text-gray-900">Oups, une erreur s'est produite 😵‍💫</h2>
@@ -85,7 +93,7 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
 
   return (
     <div
-      className="w-full max-w-sm rounded-2xl shadow-lg overflow-hidden bg-white"
+      className="w-full max-w-sm rounded-2xl shadow-lg overflow-hidden bg-white keep-size"
       style={{ borderColor: '#000000', borderWidth: 1 }}
     >
       <div

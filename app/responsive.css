@@ -15,3 +15,13 @@
     height: 150px;
   }
 }
+
+.keep-size {
+    height: 580px;
+}
+
+@media (max-height: 700px) {
+    .keep-size {
+        height: 320px;
+    }
+  }

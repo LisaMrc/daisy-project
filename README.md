@@ -52,3 +52,8 @@ Essayez-le ici : https://daisy-project-five.vercel.app/
    5. Travail sur l'UI et l'expérience utilisateur : changement du widget selon l'état (succès / erreur) et créations de boutons retry / ajouter à l'agenda
 5. Launch sur Vercel
 6. Écriture du readme, mise à jour des commentaires
+
+
+##  🧱 Structure
+- BookingDatePicker -> permet de gérer tout ce qui concerne la date et l'horaire (calendrier et gestion des variables)
+- BookingWidget -> structure globale, éléments fixes
