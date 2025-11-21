@@ -23,7 +23,7 @@ Essayez-le ici : https://daisy-project-five.vercel.app/
 
 
 ## 🎯 Objectifs
-# Pour le projet :
+### Pour le projet :
 - Répondre à des contraintes visuelles, techniques et horaires (1 semaine maximum)
 - Avoir un widget facile à utiliser (informations claires, immédiatement compréhensible)
 - Pouvoir planifier des créneaux en avance (d'où le choix du calendrier)
@@ -32,7 +32,7 @@ Essayez-le ici : https://daisy-project-five.vercel.app/
 - S'adapter à plusieurs contraintes côté enseignant : possibilité d'avoir plusieurs cours par semaine, avec des créneaux et places différentes. Gestion automatique des données
 - (Bonus :) jouer avec la DA de DaisyApp
 
-# Côté technique
+### Côté technique
 - Se former à NextJS
 - Se former à Tailwind
 - Se former à ShadcnUI
@@ -52,8 +52,11 @@ Essayez-le ici : https://daisy-project-five.vercel.app/
    5. Travail sur l'UI et l'expérience utilisateur : changement du widget selon l'état (succès / erreur) et créations de boutons retry / ajouter à l'agenda
 5. Launch sur Vercel
 6. Écriture du readme, mise à jour des commentaires
+7. Travail sur d'autres features plus secondaires
+   1. Taille du widget fixe entre tous les écrans
+   2. Récapitulatif de la réservation
 
 
 ##  🧱 Structure
-- BookingDatePicker -> permet de gérer tout ce qui concerne la date et l'horaire (calendrier et gestion des variables)
+- BookingDatePicker -> permet de gérer tout ce qui concerne le choix de date et d'horaire (calendrier)
 - BookingWidget -> structure globale, éléments fixes

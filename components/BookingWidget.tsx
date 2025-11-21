@@ -45,11 +45,10 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
       >
         <h2 className="text-2xl font-bold text-gray-900">Votre créneau a bien été réservé</h2>
         <p className="text-gray-600">
-          Rendez-vous à <b>{workshop.location}</b> le
+          Rendez-vous à <b>{workshop.location}</b> <br></br>le{' '}
           <b>{date?.toLocaleDateString('fr-FR')}</b> à <b>{selectedSlot} </b>
-          pour l'atelier {workshop.title}
+          <br></br>pour l'atelier <b>{workshop.title}</b>
         </p>
-        //   FIXME: afficher la date
 
         <button
           className="w-full py-2 rounded-lg text-white font-semibold"

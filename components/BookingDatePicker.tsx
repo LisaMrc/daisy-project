@@ -18,9 +18,10 @@ export default function BookingDatePicker({
   primaryColor,
   selectedSlot,
   setSelectedSlot,
+  date,
+  setDate,
 }: BookingDatePickerProps) {
   // données variables, leurs setters et leurs valeurs par défaut
-  const [date, setDate] = useState<Date | undefined>();
   const [slots, setSlots] = useState<string[]>([]);
   const [spotsLeft, setSpotsLeft] = useState<number | null>(null);
 
@@ -66,7 +67,7 @@ export default function BookingDatePicker({
   // mais j'ai décidé de les séparer pour un code plus flexible et lisible (single responsibility)
 
   async function handleSelect(d: Date | undefined) {
-    if (!d || isDisabled(d)) return;
+    if (!d) return;
 
     setDate(d);
 
@@ -98,7 +99,7 @@ export default function BookingDatePicker({
         <PopoverContent className="p-0">
           <Calendar
             mode="single"
-            selected={date}
+            selected={date ?? undefined}
             onSelect={handleSelect}
             locale={fr}
             modifiers={{
