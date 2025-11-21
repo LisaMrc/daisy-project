@@ -11,7 +11,7 @@ interface BookingWidgetProps {
 export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidgetProps) {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [date, setDate] = useState<Date | null>(null); // pour reset la date s'il y a succès
+  const [date, setDate] = useState<Date | null>(null);
 
   // simulation API
   const workshop = {
@@ -25,7 +25,7 @@ export default function BookingWidget({ primaryColor = '#F85541' }: BookingWidge
     if (!selectedSlot) return alert('Merci de sélectionner une date et une heure');
     setStatus('loading');
     setTimeout(() => {
-      // On fait comme si la requête pouvait échouer 1 fois sur 5 (pour une question de démonstration)
+      // On fait comme si la requête pouvait échouer 1 fois sur 5 (pour une question de démonstration) et prenait 1,2 s
       setStatus(Math.random() > 0.2 ? 'success' : 'error');
     }, 1200);
   };

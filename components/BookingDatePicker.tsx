@@ -71,10 +71,12 @@ export default function BookingDatePicker({
 
     setDate(d);
 
+    // Calcule le jour de la semaine par rapport à d et l'utilise pour trouver les horaires dans schedule
     const day = d.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const availableSlots = schedule[day as keyof typeof schedule] || [];
     setSlots(availableSlots);
 
+    // Gère le cas où la date est changée
     if (!availableSlots.includes(selectedSlot || '')) {
       setSelectedSlot(null);
 
